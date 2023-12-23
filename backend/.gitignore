@@ -1,0 +1,8 @@
+node_modules/
+prisma/
+
+.env
+
+*.json
+*.log
+*.lock
