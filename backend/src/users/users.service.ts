@@ -3,28 +3,45 @@ import { signUp } from './dto/signup';
 import { prisma } from '../../prisma/prismaClient';
 
 const addUser = async (data: signUp) => {
-    await prisma.users.create({
+    const result = await prisma.user.create({
         data: {
             name: data.userName,
             email: data.userEmail,
             password: data.userPassword
         }
     });
+
+    return result;
 }
 
 const deleteUser = async (data: signIn) => {
-    await prisma.users.findMany({
-        data: {
+    await prisma.user.findMany({
+        where: {
             email: data.userEmail,
             password: data.userPassword
         }
     });
 }
 
-const changeName = async (data: signUp) => {
-    await prisma.users.update({
+const findSpecifUser = async (data: signUp) => {
+    const result = await prisma.user.findFirst({
         where: {
-            email: data.userEmail
+            name: data.userName,
+            email: data.userEmail,
+            password: data.userPassword
+        },
+        select: {
+            id: true
+        }
+    });
+
+    return result;
+}
+
+const changeName = async (user_id: number, data: signUp) => {
+    await prisma.user.update({
+        where: {
+            id: user_id
         },
         data: {
             name: data.userName
@@ -32,4 +49,4 @@ const changeName = async (data: signUp) => {
     })
 }
 
-export { addUser, deleteUser, changeName };
+export { addUser, deleteUser, findSpecifUser, changeName };
