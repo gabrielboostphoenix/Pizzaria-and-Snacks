@@ -1,18 +1,26 @@
 import { Request, Response, NextFunction } from 'express';
-import 'express-async-errors';
 
 const middleware = (err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
-        return res.status(400).json({
-            statusCode: 400,
-            errorMessage: err.message
-        })
+        if (err.message == 'missing user credentials') {
+            return res.status(400).json({
+                statusCode: 400,
+                errorMessage: err.message
+            });
+        } else if (err.message == 'invalid user credentials') {
+            return res.status(401).json({
+                statusCode: 401,
+                errorMessage: err.message
+            });
+        } else if (err.message == 'e-mail already is been used') {
+            return res.status(409).json({
+                statusCode: 409,
+                errorMessage: err.message
+            })
+        }
     }
-
-    return res.status(500).json({
-        statusCode: 500,
-        errorMessage: "Internal Server Error"
-    })
+    
+    return next();
 }
 
 export { middleware };

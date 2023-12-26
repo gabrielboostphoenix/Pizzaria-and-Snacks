@@ -1,32 +1,11 @@
-import { Router, Request, Response } from "express";
-import { addUser, findSpecifUser } from './users/users.service';
+import { Router } from "express";
+import { userSignUpController } from "./users/controllers/users.signup.controller";
+import { userSignInController } from "./users/controllers/users.signin.controller";
 
 const router = Router();
 
-router.post('/signin', (req: Request, res: Response) => {
+router.post('/signin', new userSignInController().handle);
 
-});
-
-router.post('/signup', async (req: Request, res: Response) => {
-    const { userName, userEmail, userPassword } = req.body;
-
-    if (!userName && !userEmail && !userPassword) {
-        throw new Error("missing user informations!");
-    }
-
-    const checkIfThereIsAlreadyUser = await findSpecifUser(req.body);
-
-    if (checkIfThereIsAlreadyUser) {
-        throw new Error('User already exists!');
-    }
-
-    const result = addUser({
-        userName: userName,
-        userEmail: userEmail,
-        userPassword: userPassword
-    });
-
-    return result;
-});
+router.post('/signup', new userSignUpController().handle);
 
 export { router };
