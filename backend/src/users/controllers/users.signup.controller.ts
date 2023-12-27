@@ -7,23 +7,32 @@ class userSignUpController {
         const { userName, userEmail, userPassword } = req.body;
 
         if (!userName || !userEmail || !userPassword) {
-            throw new Error('missing user credentials');
+            const error = new Error('missing user credentials!');
+            return res.status(400).json({
+                statusCode: 400,
+                errorMessage: error.message
+            });
         }
 
-        const checkIfEmailAlreadyIsBeenUsed = await checkIfEmailIsBeenUsed(req.body);
+        const checkIfEmailAlreadyIsBeenUsed = await checkIfEmailIsBeenUsed(userEmail);
 
         if (checkIfEmailAlreadyIsBeenUsed) {
-            throw new Error('e-mail already is been used');
+            const error = new Error('e-mail already is been used!');
+            return res.status(409).json({
+                statusCode: 409,
+                errorMessage: error.message
+            });
         }
 
-        const result = addUser({
+        const result = await addUser({
             userName: userName,
             userEmail: userEmail,
             userPassword: userPassword
         });
 
-        return res.status(201).send({
-            'user created suceesfully': result
+        return res.status(201).json({
+            message: 'User created successfully!',
+            result: result
         });
     }
 }

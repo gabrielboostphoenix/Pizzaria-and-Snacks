@@ -7,17 +7,25 @@ class userSignInController {
         const { userEmail, userPassword } = req.body;
 
         if (!userEmail || !userPassword) {
-            throw new Error('missing user credentials!');
+            const error = new Error('missing user credentials!');
+            return res.status(400).json({
+                statusCode: 400,
+                errorMessage: error.message
+            });
         }
 
         const checkIfThereIsAlreadyUser = await findSpecifUserID(req.body);
 
         if (checkIfThereIsAlreadyUser.length == 0) {
-            throw new Error('invalid user credentials!');
+            const error = new Error('invalid user credentials!');
+            return res.status(401).json({
+                statusCode: 401,
+                errorMessage: error.message
+            });
         }
 
         return res.status(200).json({
-            message: "You've entered in route with sucessfully!"
+            message: "You've entered in route with successfully!"
         });
     }
 }
