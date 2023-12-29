@@ -1,7 +1,20 @@
 import { Request, Response } from "express";
 import { findSpecifUserID } from "../services/users.auth.service";
+import { payload } from '../dto/signin';
+import { sign } from 'jsonwebtoken';
 
 class userSignInController {
+
+    async generateAccessToken(data: payload) {
+        const payload = {
+            id: data.userID,
+            email: data.userEmail
+        }
+        const secret = process.env.JWT_SECRET ? process.env.JWT_SECRET : '';
+        const options = { expiresIn: '30d' };
+
+        return sign(payload, secret, options);
+    }
 
     async handle(req: Request, res: Response) {
         const { userEmail, userPassword } = req.body;

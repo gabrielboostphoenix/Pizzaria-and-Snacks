@@ -3,4 +3,9 @@ type signIn = {
     userPassword: string
 }
 
-export { signIn }
+type payload = {
+    userID: number,
+    userEmail: string
+}
+
+export { signIn, payload };
