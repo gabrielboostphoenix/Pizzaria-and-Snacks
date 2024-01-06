@@ -1,6 +1,10 @@
+// Importing area
 import { prisma } from '../../../prisma/prismaClient';
 import { signIn } from '../dto/signin';
 
+// Declaration of service functionalities
+
+// This functionality finds a specif user and return your ID
 const findSpecifUserID = async (data: signIn) => {
     const result = await prisma.user.findMany({
         where: {
@@ -15,4 +19,5 @@ const findSpecifUserID = async (data: signIn) => {
     return result;
 }
 
+// Exporting area
 export { findSpecifUserID };

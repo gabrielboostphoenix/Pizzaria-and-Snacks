@@ -1,6 +1,10 @@
+// Importing area
 import { signUp } from '../dto/signup';
 import { prisma } from '../../../prisma/prismaClient';
 
+// Declaration of service functionalities
+
+// This functionality adds an user
 const addUser = async (data: signUp) => {
     const result = await prisma.user.create({
         data: {
@@ -13,6 +17,7 @@ const addUser = async (data: signUp) => {
     return result;
 }
 
+// This functionality checks for an used e-mail
 const checkIfEmailIsBeenUsed = async (email: string) => {
     const result = await prisma.user.findFirst({
         where: {
@@ -23,4 +28,5 @@ const checkIfEmailIsBeenUsed = async (email: string) => {
     return result;
 }
 
+// Exporting area
 export { addUser, checkIfEmailIsBeenUsed };
