@@ -1,6 +1,6 @@
 // Importing area
 import { prisma } from '../../../prisma/prismaClient';
-import { signIn } from '../dto/signin';
+import { signIn } from '../dto/sign.in';
 
 // Declaration of service functionalities
 

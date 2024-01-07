@@ -1,4 +1,5 @@
-import { Request, Response, NextFunction } from 'express';
+import { userCredentials } from '../dto/user.credentials';
+import { Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
 const verifyAccessToken = async (token: string) => {
@@ -13,19 +14,19 @@ const verifyAccessToken = async (token: string) => {
 }
 
 
-const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
+const isAuthenticated = async (req: userCredentials, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
     if (authHeader?.includes('Bearer')) {
 
         const authorizationToken = authHeader.split(' ')[0];
         const result = await verifyAccessToken(authorizationToken);
-        req.user = result;
+        req.userCredentials = result;
 
     } else {
 
         const result = { success: false, data: "It doesn't have an authorization token" };
-        req.user = result;
+        req.userCredentials = result;
 
     }
 

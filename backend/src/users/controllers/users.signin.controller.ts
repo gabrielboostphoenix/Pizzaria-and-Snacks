@@ -1,6 +1,7 @@
-import { Request, Response } from "express";
-import { findSpecifUserID } from "../services/users.auth.service";
-import { payload } from '../dto/signin';
+import { userCredentials } from '../dto/user.credentials';
+import { Response } from 'express';
+import { findSpecifUserID } from '../services/users.auth.service';
+import { payload } from '../dto/sign.in';
 import { sign } from 'jsonwebtoken';
 
 class userSignInController {
@@ -16,7 +17,7 @@ class userSignInController {
         return sign(payload, secret, options);
     }
 
-    async handle(req: Request, res: Response) {
+    async handle(req: userCredentials, res: Response) {
         const { userEmail, userPassword } = req.body;
 
         if (!userEmail || !userPassword) {
