@@ -1,5 +1,6 @@
 // Importing area
 import { Request, Response } from 'express';
+import { hash } from 'bcryptjs';
 import { addUser, checkIfEmailIsBeenUsed } from '../services/users.signup.service';
 
 // Class statement
@@ -19,9 +20,9 @@ class userSignUpController {
             });
         }
 
+        // Checking if email is been used for another user
         const checkIfEmailAlreadyIsBeenUsed = await checkIfEmailIsBeenUsed(userEmail);
 
-        // Checking if email is been used for another user
         if (checkIfEmailAlreadyIsBeenUsed) {
             const error = new Error('e-mail already is been used!');
             return res.status(409).json({
@@ -30,10 +31,14 @@ class userSignUpController {
             });
         }
 
+        // Hashing the user password
+        const hashedPassword = await hash(userPassword, 8);
+
+        // Registering an user in database
         const operationResult = await addUser({
             userName: userName,
             userEmail: userEmail,
-            userPassword: userPassword
+            userPassword: hashedPassword
         });
 
         // Returning user creation message

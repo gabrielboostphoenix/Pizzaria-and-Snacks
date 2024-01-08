@@ -5,10 +5,14 @@ const verifyAccessToken = async (token: string) => {
     const secret = process.env.JWT_SECRET ? process.env.JWT_SECRET : '';
 
     try {
+
         const decoded = verify(token, secret);
         return { success: true, data: decoded };
+
     } catch (error) {
+
         return { success: false, data: 'Invalid JSON Web Token' };
+
     }
 }
 
