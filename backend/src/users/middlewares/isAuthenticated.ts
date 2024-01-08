@@ -1,4 +1,3 @@
-import { userCredentials } from '../dto/user.credentials';
 import { Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
@@ -14,7 +13,7 @@ const verifyAccessToken = async (token: string) => {
 }
 
 
-const isAuthenticated = async (req: userCredentials, res: Response, next: NextFunction) => {
+const isAuthenticated = async (req: any, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
     if (authHeader?.includes('Bearer')) {

@@ -4,7 +4,7 @@ type signIn = {
 }
 
 type payload = {
-    userID: number,
+    userID: string,
     userEmail: string
 }
 

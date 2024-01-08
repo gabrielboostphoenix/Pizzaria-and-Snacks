@@ -6,7 +6,7 @@ import { signIn } from '../dto/sign.in';
 
 // This functionality finds a specif user and return your ID
 const findSpecifUserID = async (data: signIn) => {
-    const result = await prisma.user.findMany({
+    const result = await prisma.user.findFirst({
         where: {
             email: data.userEmail,
             password: data.userPassword

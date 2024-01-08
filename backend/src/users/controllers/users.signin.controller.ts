@@ -1,4 +1,3 @@
-import { userCredentials } from '../dto/user.credentials';
 import { Response } from 'express';
 import { findSpecifUserID } from '../services/users.auth.service';
 import { payload } from '../dto/sign.in';
@@ -17,30 +16,44 @@ class userSignInController {
         return sign(payload, secret, options);
     }
 
-    async handle(req: userCredentials, res: Response) {
-        const { userEmail, userPassword } = req.body;
+    async handle(req: any, res: Response) {
+        if (req.userCredentials.success === true) {
 
-        if (!userEmail || !userPassword) {
-            const error = new Error('missing user credentials!');
-            return res.status(400).json({
-                statusCode: 400,
-                errorMessage: error.message
+            return res.send('You have the token to login, Congratulations!');
+
+        } else {
+            const { userEmail, userPassword } = req.body;
+
+            if (userEmail === undefined || userPassword === undefined) {
+                const error = new Error('missing user credentials!');
+                return res.status(400).json({
+                    statusCode: 400,
+                    errorMessage: error.message
+                });
+            }
+
+            const checkIfThereIsAlreadyUser = await findSpecifUserID(req.body);
+
+            if (checkIfThereIsAlreadyUser?.id === null) {
+                const error = new Error('invalid user credentials!');
+                return res.status(401).json({
+                    statusCode: 401,
+                    errorMessage: error.message
+                });
+            }
+
+            const payload = {
+                userID: checkIfThereIsAlreadyUser?.id,
+                userEmail: userEmail
+            }
+
+            const generatedTokenResult = await this.generateAccessToken(payload)
+
+            return res.status(200).json({
+                message: "You've entered in route with successfully!",
+                jwtAccess: generatedTokenResult
             });
         }
-
-        const checkIfThereIsAlreadyUser = await findSpecifUserID(req.body);
-
-        if (checkIfThereIsAlreadyUser.length == 0) {
-            const error = new Error('invalid user credentials!');
-            return res.status(401).json({
-                statusCode: 401,
-                errorMessage: error.message
-            });
-        }
-
-        return res.status(200).json({
-            message: "You've entered in route with successfully!"
-        });
     }
 }
 
