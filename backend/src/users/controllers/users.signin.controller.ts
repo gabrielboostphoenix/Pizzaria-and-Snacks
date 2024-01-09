@@ -36,7 +36,7 @@ class userSignInController {
             const { userEmail, userPassword } = req.body;
 
             // Checking for missing user credentials
-            if (userEmail === undefined || userPassword === undefined) {
+            if (userEmail === "" || userPassword === "") {
                 const error = new Error('missing user credentials!');
                 return res.status(400).json({
                     statusCode: 400,
@@ -69,6 +69,7 @@ class userSignInController {
                 // Returning the success message
                 return res.status(200).json({
                     message: "You've entered in route with successfully!",
+                    jwtMessage: "Your json web token was generated",
                     jwtAccess: generatedTokenResult
                 });
 
