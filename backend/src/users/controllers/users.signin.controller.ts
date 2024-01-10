@@ -1,4 +1,4 @@
-// Importing area
+// Importing Area
 import { Response } from 'express';
 import { findSpecifUser } from '../services/users.auth.service';
 import { payload } from '../dto/sign.in';
@@ -27,7 +27,10 @@ class userSignInController {
         // Checking for avaliable user credentials in the login request
         if (req.userCredentials.success === true) {
 
-            return res.send('You have the token to login, so congratulations!');
+            return res.status(200).json({
+                statusCode: 200,
+                message: "You have a valid json web token!"
+            });
 
         } else {
 
@@ -79,5 +82,5 @@ class userSignInController {
     }
 }
 
-// Exporting area
+// Exporting Area
 export { userSignInController };

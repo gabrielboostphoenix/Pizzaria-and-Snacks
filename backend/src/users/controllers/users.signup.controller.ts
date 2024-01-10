@@ -1,4 +1,4 @@
-// Importing area
+// Importing Area
 import { Request, Response } from 'express';
 import { hash } from 'bcryptjs';
 import { addUser, checkIfEmailIsBeenUsed } from '../services/users.signup.service';
@@ -49,5 +49,5 @@ class userSignUpController {
     }
 }
 
-// Exporting area
+// Exporting Area
 export { userSignUpController };
