@@ -43,7 +43,7 @@ const changePassword = async (user_id: string, password: string) => {
 }
 
 const findSpecifUserByID = async (user_id: string) => {
-    const result = await prisma.user.findFirstOrThrow({
+    const result = await prisma.user.findUnique({
         where: {
             id: user_id
         }

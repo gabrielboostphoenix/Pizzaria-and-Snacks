@@ -17,13 +17,16 @@ class userAccountSettingsController {
             if (userName !== undefined && userName !== "") {
 
                 // Changing the user name
-                changeName(userID, userName);
+                await changeName(userID, userName);
+
+                // Storing the result of user informations new changes
+                const result = await findSpecifUserByID(userID);
 
                 // Returning the operation result to the client
                 return res.status(200).json({
                     statusCode: 200,
                     message: "Changed user information with successfully!",
-                    user: findSpecifUserByID(userID)
+                    user: result
                 });
 
             }
@@ -32,13 +35,16 @@ class userAccountSettingsController {
             if (userPassword !== undefined && userPassword !== "") {
 
                 // Changing the user password
-                changePassword(userID, userPassword)
+                await changePassword(userID, userPassword)
+
+                // Storing the result of user informations new changes
+                const result = await findSpecifUserByID(userID);
 
                 // Returning the operation result to the client
                 return res.status(200).json({
                     statusCode: 200,
                     message: "Changed user information with successfully!",
-                    user: findSpecifUserByID(userID)
+                    user: result
                 });
 
             }
