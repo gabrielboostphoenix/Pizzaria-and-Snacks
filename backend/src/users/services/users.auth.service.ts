@@ -5,7 +5,7 @@ import { signIn } from '../dto/sign.in';
 
 // Declaration of service functionalities
 
-// This functionality finds a specif user and return your ID
+// This functionality finds a specif user and return it
 const findSpecifUser = async (data: signIn) => {
     const result = await prisma.user.findFirstOrThrow({
         where: {
