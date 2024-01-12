@@ -1,8 +1,8 @@
 // Importing Area
 import { Response } from 'express';
-import { changeName, changePassword, findSpecifUserByID } from '../services/users.handle.service';
+import { changeName, findSpecifUserByID } from '../services/users.handle.service';
 
-class userAccountSettingsController {
+class userAccountNameSettingsController {
 
     // This functionality handles user account settings request
     async handle(req: any, res: Response) {
@@ -10,7 +10,7 @@ class userAccountSettingsController {
         if (req.userCredentials.success === true) {
 
             // Extracting the user informations from request
-            const { userName, userPassword } = req.body;
+            const { userName } = req.body;
             const userID = req.userCredentials.data.id;
 
             // Checking if exists user information like the name
@@ -31,26 +31,8 @@ class userAccountSettingsController {
 
             }
 
-            // Checking if exists user information like the password
-            if (userPassword !== undefined && userPassword !== "") {
-
-                // Changing the user password
-                await changePassword(userID, userPassword)
-
-                // Storing the result of user informations new changes
-                const result = await findSpecifUserByID(userID);
-
-                // Returning the operation result to the client
-                return res.status(200).json({
-                    statusCode: 200,
-                    message: "Changed user information with successfully!",
-                    user: result
-                });
-
-            }
-
             // Checking for no user information has been sent through request
-            if (userName === undefined || userName === "" && userPassword === undefined || userPassword === "") {
+            if (userName === undefined || userName === "") {
                 return res.status(400).json({
                     statusCode: 400,
                     message: "missing user informations"
@@ -69,4 +51,4 @@ class userAccountSettingsController {
     }
 }
 
-export { userAccountSettingsController };
+export { userAccountNameSettingsController };
