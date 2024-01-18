@@ -1,6 +1,6 @@
 // Importing area
-import { signUp } from '../../dto/sign.up';
-import { prisma } from '../../../../prisma/prismaClient';
+import { signUp } from '../../@types/sign.up';
+import { prisma } from '../../../prisma/prismaClient';
 
 // Declaration of service functionalities
 

@@ -1,6 +1,6 @@
 // Importing Area
 import { Response } from 'express';
-import { changeName, findSpecifUserByID } from '../../services/users/users.handle.service';
+import { changeName, findSpecifUserByID } from '../services/users.handle.service';
 
 class userAccountNameSettingsController {
 

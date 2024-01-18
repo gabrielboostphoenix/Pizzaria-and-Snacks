@@ -1,7 +1,7 @@
 // Importing Area
 import { Request, Response } from 'express';
 import { hash } from 'bcryptjs';
-import { addUser, checkIfEmailIsBeenUsed } from '../../services/users/users.signup.service';
+import { addUser, checkIfEmailIsBeenUsed } from '../services/users.signup.service';
 
 // Class statement
 class userSignUpController {

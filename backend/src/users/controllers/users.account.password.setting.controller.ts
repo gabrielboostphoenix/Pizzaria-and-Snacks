@@ -1,7 +1,7 @@
 // Importing Area
 import { Response } from 'express';
 import { hash } from 'bcryptjs';
-import { changePassword, findSpecifUserByID } from '../../services/users/users.handle.service';
+import { changePassword, findSpecifUserByID } from '../services/users.handle.service';
 
 class userAccountPasswordSettingsController {
 

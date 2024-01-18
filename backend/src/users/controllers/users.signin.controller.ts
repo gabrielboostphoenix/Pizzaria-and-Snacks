@@ -1,7 +1,7 @@
 // Importing Area
 import { Response } from 'express';
-import { findSpecifUser } from '../../services/users/users.auth.service';
-import { payload } from '../../dto/sign.in';
+import { findSpecifUser } from '../services/users.auth.service';
+import { payload } from '../../@types/sign.in';
 import { sign } from 'jsonwebtoken';
 
 // This functionality checks for a valid access token
