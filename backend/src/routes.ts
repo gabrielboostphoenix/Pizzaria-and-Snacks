@@ -1,9 +1,9 @@
 // Importing Area
 import { Router } from 'express';
-import { userSignUpController } from './users/controllers/users.signup.controller';
-import { userSignInController } from './users/controllers/users.signin.controller';
-import { userAccountNameSettingsController } from './users/controllers/users.account.name.setting.controller';
-import { userAccountPasswordSettingsController } from './users/controllers/users.account.password.setting.controller';
+import { userSignUpController } from './users/controllers/users/users.signup.controller';
+import { userSignInController } from './users/controllers/users/users.signin.controller';
+import { userAccountNameSettingsController } from './users/controllers/users/users.account.name.setting.controller';
+import { userAccountPasswordSettingsController } from './users/controllers/users/users.account.password.setting.controller';
 import { isAuthenticated } from './users/middlewares/isAuthenticated';
 
 const router = Router();

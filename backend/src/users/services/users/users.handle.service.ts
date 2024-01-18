@@ -1,5 +1,5 @@
 // Importing area
-import { prisma } from '../../../prisma/prismaClient';
+import { prisma } from '../../../../prisma/prismaClient';
 
 // Declaration the service functionalities
 

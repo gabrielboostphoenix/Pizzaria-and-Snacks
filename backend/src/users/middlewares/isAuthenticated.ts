@@ -16,7 +16,6 @@ const verifyAccessToken = async (token: string) => {
     }
 }
 
-
 const isAuthenticated = async (req: any, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
