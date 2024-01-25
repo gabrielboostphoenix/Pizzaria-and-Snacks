@@ -20,5 +20,11 @@ router.patch('/settings/name', isAuthenticated, new userAccountNameSettingsContr
 // Account Password Settings Route
 router.patch('/settings/password', isAuthenticated, new userAccountPasswordSettingsController().handle);
 
+// Category Adding Route
+router.post('/category/add', isAuthenticated, new categoryAddController().handle);
+
+// Category Removing Route
+router.delete('/category/remove', isAuthenticated, new categoryRemoveController().handle);
+
 // Exporting Area
 export { router };

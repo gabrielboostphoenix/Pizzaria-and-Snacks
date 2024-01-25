@@ -1,7 +1,7 @@
 // Importing area
 import { prisma } from '../../../prisma/prismaClient';
 import { compare } from 'bcryptjs';
-import { signIn } from '../../@types/sign.in';
+import { signIn } from '../../types/sign.in';
 
 // Declaration of service functionalities
 
