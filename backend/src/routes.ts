@@ -4,7 +4,10 @@ import { userSignUpController } from './users/controllers/users.signup.controlle
 import { userSignInController } from './users/controllers/users.signin.controller';
 import { userAccountNameSettingsController } from './users/controllers/users.account.name.setting.controller';
 import { userAccountPasswordSettingsController } from './users/controllers/users.account.password.setting.controller';
-import { isAuthenticated } from './users/middlewares/isAuthenticated';
+import { categoryListController } from './categories/controllers/categories.list.controller';
+import { categoryAddController } from './categories/controllers/categories.add.controller';
+import { categoryRemoveController } from './categories/controllers/categories.remove.controller';
+import { isAuthenticated } from './middlewares/isAuthenticated';
 
 const router = Router();
 
@@ -19,6 +22,9 @@ router.patch('/settings/name', isAuthenticated, new userAccountNameSettingsContr
 
 // Account Password Settings Route
 router.patch('/settings/password', isAuthenticated, new userAccountPasswordSettingsController().handle);
+
+// Category Route
+router.get('/category', isAuthenticated, new categoryListController().handle);
 
 // Category Adding Route
 router.post('/category/add', isAuthenticated, new categoryAddController().handle);

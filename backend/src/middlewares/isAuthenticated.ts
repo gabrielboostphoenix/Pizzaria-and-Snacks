@@ -19,9 +19,9 @@ const verifyAccessToken = async (token: string) => {
 const isAuthenticated = async (req: any, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
-    if (authHeader?.includes('Bearer')) {
+    if (authHeader.split(' ')[0] === 'Bearer') {
 
-        const authorizationToken = authHeader.split(' ')[0];
+        const authorizationToken = authHeader.split(' ')[1];
         const result = await verifyAccessToken(authorizationToken);
         req.userCredentials = result;
 

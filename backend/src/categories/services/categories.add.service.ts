@@ -13,6 +13,7 @@ const addCategory = async (data: category) => {
 
     if (!checkingForExistingRegister) {
 
+        // In this case there's no category register
         // Creating a new category register in database
         const result = await prisma.category.create({
             data: {
@@ -25,11 +26,12 @@ const addCategory = async (data: category) => {
 
     } else {
 
-        // Returning an error because it wasn't possible the databse operation
+        // In this case there's a category register
+        // Returning an error because it wasn't possible the database operation
         return "There's no possibility to create a new category like this because already exists!";
 
     }
 }
 
 // Exporting Area
-export { addCategory }
+export { addCategory };
