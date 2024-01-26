@@ -6,6 +6,7 @@ import { userAccountNameSettingsController } from './users/controllers/users.acc
 import { userAccountPasswordSettingsController } from './users/controllers/users.account.password.setting.controller';
 import { categoryListController } from './categories/controllers/categories.list.controller';
 import { categoryAddController } from './categories/controllers/categories.add.controller';
+import { categoryUpdateController } from './categories/controllers/categories.update.controller';
 import { categoryRemoveController } from './categories/controllers/categories.remove.controller';
 import { isAuthenticated } from './middlewares/isAuthenticated';
 
@@ -28,6 +29,9 @@ router.get('/category', isAuthenticated, new categoryListController().handle);
 
 // Category Adding Route
 router.post('/category/add', isAuthenticated, new categoryAddController().handle);
+
+// Category Update Route
+router.patch('/category/update', isAuthenticated, new categoryUpdateController().handle);
 
 // Category Removing Route
 router.delete('/category/remove', isAuthenticated, new categoryRemoveController().handle);

@@ -4,6 +4,7 @@ import { prisma } from '../../../prisma/prismaClient';
 
 // This functionality adds a new category
 const addCategory = async (data: category) => {
+
     // Searching for an existing category register in database
     const checkingForExistingRegister = await prisma.category.findFirst({
         where: {
@@ -31,6 +32,7 @@ const addCategory = async (data: category) => {
         return "There's no possibility to create a new category like this because already exists!";
 
     }
+
 }
 
 // Exporting Area

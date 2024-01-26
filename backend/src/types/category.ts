@@ -1,6 +1,7 @@
 // Declaring the category's type
-type category = {
-    categoryName: string
+interface category {
+    categoryName: string,
+    newCategoryName: string
 }
 
 // Exporting Area
