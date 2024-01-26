@@ -6,7 +6,6 @@ const listCategory = async () => {
 
     // Getting all of the category registers from database
     const result = await prisma.category.findMany();
-
     // Returning the result
     return result;
 
