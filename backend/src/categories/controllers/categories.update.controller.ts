@@ -49,7 +49,7 @@ class categoryUpdateController {
         }
 
     }
-}
+};
 
 // Exporting Area
 export { categoryUpdateController };

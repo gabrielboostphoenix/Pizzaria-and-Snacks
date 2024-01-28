@@ -26,7 +26,7 @@ const checkIfEmailIsBeenUsed = async (email: string) => {
     });
 
     return result;
-}
+};
 
 // Exporting area
 export { addUser, checkIfEmailIsBeenUsed };

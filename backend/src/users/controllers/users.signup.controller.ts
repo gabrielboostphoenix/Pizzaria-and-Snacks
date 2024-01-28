@@ -47,7 +47,7 @@ class userSignUpController {
             result: operationResult
         });
     }
-}
+};
 
 // Exporting Area
 export { userSignUpController };

@@ -50,7 +50,7 @@ const findSpecifUserByID = async (user_id: string) => {
     });
 
     return result;
-}
+};
 
 // Exporting area
 export { deleteUser, changeName, changePassword, findSpecifUserByID };

@@ -9,6 +9,7 @@ import { categoryAddController } from './categories/controllers/categories.add.c
 import { categoryUpdateController } from './categories/controllers/categories.update.controller';
 import { categoryRemoveController } from './categories/controllers/categories.remove.controller';
 import { isAuthenticated } from './middlewares/isAuthenticated';
+import { productAddController } from './products/controllers/products.add.controller';
 
 const router = Router();
 
@@ -35,6 +36,9 @@ router.patch('/category/update', isAuthenticated, new categoryUpdateController()
 
 // Category Removing Route
 router.delete('/category/remove', isAuthenticated, new categoryRemoveController().handle);
+
+// Product Adding Route
+router.post('/product/add', isAuthenticated, new productAddController().handle);
 
 // Exporting Area
 export { router };

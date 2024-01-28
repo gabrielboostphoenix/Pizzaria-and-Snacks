@@ -21,7 +21,7 @@ const findSpecifUser = async (data: signIn) => {
     } else {
         return new Error('invalid user credentials!');
     }
-}
+};
 
 // Exporting area
 export { findSpecifUser };

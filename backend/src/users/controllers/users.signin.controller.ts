@@ -80,7 +80,7 @@ class userSignInController {
 
         }
     }
-}
+};
 
 // Exporting Area
 export { userSignInController };

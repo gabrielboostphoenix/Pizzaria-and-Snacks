@@ -43,7 +43,7 @@ class categoryRemoveController {
 
         }
     }
-}
+};
 
 // Exporting Area
 export { categoryRemoveController };

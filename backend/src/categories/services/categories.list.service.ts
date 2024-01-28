@@ -9,7 +9,7 @@ const listCategory = async () => {
     // Returning the result
     return result;
 
-}
+};
 
 // Exporting Area
 export { listCategory };

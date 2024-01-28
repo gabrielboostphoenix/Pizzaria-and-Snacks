@@ -37,7 +37,7 @@ const removeCategory = async (data: category) => {
 
     }
 
-}
+};
 
 // Exporting Area
 export { removeCategory };

@@ -45,7 +45,7 @@ class categoryListController {
         }
 
     }
-}
+};
 
 // Exporting Area
 export { categoryListController };

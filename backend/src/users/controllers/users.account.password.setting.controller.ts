@@ -52,6 +52,6 @@ class userAccountPasswordSettingsController {
 
         }
     }
-}
+};
 
 export { userAccountPasswordSettingsController };

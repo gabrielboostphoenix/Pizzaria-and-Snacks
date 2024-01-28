@@ -49,6 +49,6 @@ class userAccountNameSettingsController {
 
         }
     }
-}
+};
 
 export { userAccountNameSettingsController };

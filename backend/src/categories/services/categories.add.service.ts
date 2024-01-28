@@ -33,7 +33,7 @@ const addCategory = async (data: category) => {
 
     }
 
-}
+};
 
 // Exporting Area
 export { addCategory };
