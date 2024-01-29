@@ -58,7 +58,7 @@ const addProduct = async (data: product) => {
         // In this case was possible to find the specific register
         // So that means won't be possible to add it
         // Returning the an error message
-        return 403;
+        return 409;
 
     }
 };

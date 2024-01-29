@@ -7,6 +7,16 @@ class categoryAddController {
     // This functionality handles the category adding request
     async handle(req: any, res: Response) {
 
+        // Extracting informations through user request
+        const { categoryName } = req.body;
+
+        // Checking if any missing informations
+        if (!categoryName) {
+
+        } else {
+
+        }
+
         // Checking for avaliable user credentials in the category adding request
         if (req.userCredentials.success === true) {
 

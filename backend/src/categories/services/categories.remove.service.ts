@@ -26,7 +26,7 @@ const removeCategory = async (data: category) => {
 
         // In this case was possible to find the specific category
         // Deleting category register in database
-        const result = await prisma.category.delete({
+        const result = await prisma.category.deleteMany({
             where: {
                 id: categoryID.id
             }

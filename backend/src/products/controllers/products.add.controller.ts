@@ -7,6 +7,21 @@ class productAddController {
     // This functionality handles the product adding route
     async handle(req: any, res: Response) {
         
+        // Extracting informations through user request
+        const { productName, productPrice, productDescription, productBanner, categoryName } = req.body;
+
+        // Checking if any missing informations
+        if (!productName || !productPrice || !productDescription
+            || !productBanner || !categoryName) {
+
+            // Returning an error message
+            return res.status(400).json({
+                statusCode: 400,
+                errorMessage: "There's no enough informations in the request"
+            });
+
+        }
+
         // Checking if exists avaliable user credentials
         if (req.userCredentials.success === true) {
 
@@ -27,11 +42,11 @@ class productAddController {
             } else if (typeof result === 'number') {
 
                 // Checking the status code of the result
-                if (result === 403) {
+                if (result === 409) {
 
                     // Returning a specific error response
-                    return res.status(403).json({
-                        statusCode: 403,
+                    return res.status(409).json({
+                        statusCode: 409,
                         errorMessage: "It wasn't possible to add the product because already exists!"
                     });
 
